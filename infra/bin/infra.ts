@@ -11,5 +11,6 @@ new BlogInfraStack(app, 'BlogInfraStack', {
     },
     domainName: "coel.link",
     siteSubDomain: "blog",
+    useCloudFront: true
 });
 
