@@ -7,10 +7,10 @@ build:
 	cd myblog && hugo ; cd -
 
 diff:
-	cd infra && cdk diff ; cd -
+	cd infra && cdk --profile private diff ; cd -
 
 deploy:
-	cd infra && cdk deploy ; cd -
+	cd infra && cdk --profile private deploy ; cd -
 
 local:
 	cd myblog && hugo server -w ; cd -

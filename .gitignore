@@ -11,3 +11,5 @@ cdk.out
 # Hugo
 public
 jsconfig.json
+
+.idea

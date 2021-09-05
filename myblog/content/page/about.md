@@ -1,6 +1,6 @@
 ---
 title: About
-description: My blog where i post about tech stuff. Though it's mostly about AWS
+description: My blog where I post about tech stuff. Though it's mostly about AWS and Java.
 date: '2021-07-28'
 aliases:
   - about-us
@@ -14,4 +14,4 @@ menu:
         pre: user
 ---
 
-Hi my name is Timur Philip Cöl. I'm an devops and cloud enthusiast currently employed by DB Systel GmbH in Frankfurt.
+Hi my name is Timur Philip Cöl. I'm a devops and cloud enthusiast currently employed by DB Systel GmbH in Frankfurt.
