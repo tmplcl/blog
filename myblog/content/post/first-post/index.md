@@ -1,7 +1,7 @@
 +++ author = "Timur Philip Cöl"
 title = "Deploy containers to ECS Fargate using CDK"
 date = "2021-09-05"
-description = "Deploy containers on AWS using the ApplicationLoadBalancedFargateService CDK construct"
+description = "A short tutorial on deploying Spring Boot applications to AWS ECS using the ApplicationLoadBalancedFargateService CDK construct"
 categories = [
 "cloud",
 "aws",
@@ -19,16 +19,18 @@ tags = [
 image = "rack.jpg"
 +++
 
-In this blog post I will show you how you can easily deploy containers to AWS ECS.
+In this blog post I will show you how you can easily deploy containers to AWS ECS. You can check out the code used in this blog post [on GitHub](https://github.com/tmplcl/Spring-Boot-ECS-Fargate).
 
 ECS is a container plattform on AWS that can run containers either using standard EC2 Instances or as a managed service
-using Fargate. Compared to something like Kubernetes you can get started very quickly on ECS.
+using Fargate. Compared to something like Kubernetes you can get up and running very quickly on ECS.
 
-To start of we do need to build a container that can serve HTTP traffic. In this example I use a small spring boot
-application, but you can use every other framework and programming language as well.
 
-Our spring application will serve some simple hello world text on the `HOST:PORT/hello` path. Spring serves HTTP content
-per default on port 8080.
+## Building the Spring Boot application
+
+To start of we do need to build a container that can serve HTTP traffic. For this example I use a small Spring Boot
+application, but you can use every other HTTP backend as well.
+
+Our application will serve some simple hello world text on the `HOST:PORT/hello` path:
 
 ```java
 
@@ -50,7 +52,11 @@ public class HelloApplication {
 ```
 
 Now lets build this application using maven with `mvn package`. The built artifact will be available under the `target/`
-folder. Before we start with the CDK part lets also create a `Dockerfile` that describes how our spring application will
+directory.
+
+## Creating the container image
+
+Before we start with the CDK part lets also create a `Dockerfile` that describes how our spring application will
 be packaged into a container.
 
 This dockerfile uses the standard jdk16 base image based on alpine linux and simply copies our `.jar` artifact into the
@@ -67,11 +73,25 @@ COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 
-Now lets move over to the CDK part. Since I like to separate infrastructure code from application code I create the CDK
-project in a different directory.
+If everything is correct you can test the container build using Docker `docker build . -t helloapp` and 
+run the container with `docker run helloapp -p 8080:8080`.
 
-Once in the directory you can bootstrap the CDK project with the cli using `cdk init app --language java`. For this blog
-post I am using java as well on the infrastructure part since I want to keep the programming language. Though most CDK
+## Building the infrastructure with CDK
+
+Now lets move over to the CDK part. Since I like to separate infrastructure code from application code I create the CDK
+project in a different directory. 
+
+
+Usually it looks something like this:
+
+```yaml
+hello/          # Repository root
+hello/infra     # CDK project containing our infrastructure
+hello/service   # Our actual service
+```
+
+Once in the directory you can bootstrap the CDK project with the cli using `cdk init app --language java`. In this blog
+post I am using Java as well for the infrastructure part since I want to keep the programming language similar if possible. Though most CDK
 projects do use TypeScript or Python.
 
 **Adding the needed dependencies**
@@ -99,6 +119,8 @@ add the following dependencies.
 
 Now to build our stack we set up a new VPC and ECS Cluster. The sweet part happens under the ApplicationLoadBalancedFargateService.
 It is a 2nd level construct by AWS that lets us avoid a lot of cumbersome configuration compared to the 1st level CloudFormation constructs.
+
+
 In this expample we create a single running container in our private subnet that gets exposed on the internet with an ApplicationLoadBalancer.
 
 ```java
@@ -145,13 +167,13 @@ Now to deploy our infastructure we go to the commandline and execute `cdk deploy
 
 After some waiting we should see the stack outputs on the commandline. The stack output does contain the uri to our ApplicationLoadBalancer. For my stack i got the following output:
 
-```
+```properties
 Outputs:
 HelloInfraStack.HelloFargateServiceLoadBalancerDNS98570353 = Hello-Hello-YMYEY4EYNOWB-460997296.eu-central-1.elb.amazonaws.com
 HelloInfraStack.HelloFargateServiceServiceURL3049AAE5 = http://Hello-Hello-YMYEY4EYNOWB-460997296.eu-central-1.elb.amazonaws.com
 ```
 
-So when i try to send a request to the endpoint i should get the hello world text.
+So when I try to send a HTTP request to the endpoint I should get the hello world text served by our container.
 
 ```shell
 ❯ curl -v Hello-Hello-YMYEY4EYNOWB-460997296.eu-central-1.elb.amazonaws.com/hello
@@ -173,7 +195,11 @@ So when i try to send a request to the endpoint i should get the hello world tex
 Hello World!* Closing connection 0
 ```
 
-So it works! As you probably noticed, this endpoint is only availabe over HTTP without encryption. We will add TLS encryption in a later step.
+So it works! 
+
+As you probably noticed, this endpoint is only availabe over HTTP without encryption. We will add TLS encryption in a later step.
 
 Cheers
+
+
 Timur
