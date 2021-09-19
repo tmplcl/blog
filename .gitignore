@@ -12,4 +12,7 @@ cdk.out
 public
 jsconfig.json
 
+_gen
+
 .idea
+
