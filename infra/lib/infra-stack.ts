@@ -10,7 +10,7 @@ import { StackProps } from '@aws-cdk/core';
 export interface StaticSiteProps extends StackProps {
   domainName: string;
   siteSubDomain: string;
-  useCloudFront?: boolean;
+  dFront?: boolean;
 }
 
 export class InfraStack extends cdk.Stack {
@@ -44,32 +44,6 @@ export class InfraStack extends cdk.Stack {
     );
     new cdk.CfnOutput(this, "Certificate", { value: certificate.certificateArn });
 
-    const siteDeployment = new s3Deployment.BucketDeployment(this, "deployStaticWebsite", {
-      sources: [s3Deployment.Source.asset("../myblog/public")],
-      destinationBucket: siteBucket,
-    });
-
-    if (props.useCloudFront) {
-      this.routeToCloudFrontDistribution(siteDomain, siteBucket, zone, certificate.certificateArn)
-    } else {
-      this.routeToS3Bucket(siteDomain, siteBucket, zone);
-    }
-  }
-
-  private routeToS3Bucket(siteDomain: string, siteBucket: s3.Bucket, zone: route53.IHostedZone) {
-    const aRecord = new route53.ARecord(this, "SiteAliasRecord", {
-      recordName: siteDomain,
-      target: route53.RecordTarget.fromAlias(
-        new route53_targets.BucketWebsiteTarget(siteBucket)
-      ),
-      zone,
-    });
-    new cdk.CfnOutput(this, "domainName", {
-      value: aRecord.domainName,
-    });
-  }
-
-  private routeToCloudFrontDistribution(siteDomain: string, siteBucket: s3.Bucket, zone: route53.IHostedZone, certificateArn: string) {
 
     // CloudFront distribution that provides HTTPS
     const distribution = new cloudfront.CloudFrontWebDistribution(
@@ -77,7 +51,7 @@ export class InfraStack extends cdk.Stack {
       "SiteDistribution",
       {
         aliasConfiguration: {
-          acmCertRef: certificateArn,
+          acmCertRef: certificate.certificateArn,
           names: [siteDomain],
           sslMethod: cloudfront.SSLMethod.SNI,
           securityPolicy: cloudfront.SecurityPolicyProtocol.TLS_V1_1_2016,
@@ -106,6 +80,12 @@ export class InfraStack extends cdk.Stack {
     });
     new cdk.CfnOutput(this, "domainName", {
       value: aRecord.domainName,
+    });
+
+    const siteDeployment = new s3Deployment.BucketDeployment(this, "deployStaticWebsite", {
+      sources: [s3Deployment.Source.asset("../myblog/public")],
+      destinationBucket: siteBucket,
+      distribution: distribution
     });
   }
 }

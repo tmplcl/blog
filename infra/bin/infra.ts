@@ -10,7 +10,6 @@ new BlogInfraStack(app, 'BlogInfraStack', {
         region: 'eu-central-1',
     },
     domainName: "coel.link",
-    siteSubDomain: "blog",
-    useCloudFront: true
+    siteSubDomain: "blog"
 });
 
