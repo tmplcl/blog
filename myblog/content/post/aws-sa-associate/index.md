@@ -18,6 +18,52 @@ image = "cert.png"
 
 ### S3
 
+- Object storage with unlimited amount of data capacity
+- Default replicated across 3 AZ, 99.99% Availability, 11' 9s durability
+- Objects from 0 Bytes to 5 TB
+- Bucket names are unique across all AWS accounts
+- Lifecycle Management
+  - Delete or move objects to different class
+- Versioning
+  - Deleting restores old version
+- MultiFactor Auth Delete
+- Private buckets by default
+- Logging of operations on objects can be turned on
+- Bucket policies
+  - JSON Doc for complex access.
+  - Applies to whole bucket
+- Bucket ACL
+  - For specific objects
+
+#### Storage Classes
+
+- Standard
+- Intelligent Tiering
+- Standard IA: 30 days charge - Retrieval fee - No latency
+- One-Zone IA: Same durability - Less availability
+- Glacier: 90 days charge - mins to hours latency
+- Glacier Deep Archive: 180 days charge - hours latency
+
+
+
+### VPC
+
+#### VPC Endpoints
+
+- Access AWS services without going through the internet.
+- Interface Endpoint
+  - Costs
+  - Use an ENI with IP
+- Gateway Endpoint
+  - Route target
+  - Only DynamoDB and S3
+
+
+
+
+
+
+
 ### EC2
 
 #### Spot Instances
@@ -31,6 +77,8 @@ If you want to use these instances you can issue a maximum price that you want t
 Since your instances can be terminated with a notice of two minutes the best use cases are stateless workloads like big data, social media, web apis and so on. You should definitely not use these instances for your databases.
 
 ## AWS Service Overview
+
+So there are a large amounts of AWS services in the exam with very similar names. Here i try to describe most of them in a few words each.
 
 ### Analytics
 
@@ -130,6 +178,7 @@ Run managed relational databases like Postgres, MySQL, Oracle, MariaDB, SQLServe
 
 Data warehouse and data lake solution.
 
+### Management and Governance
 
 **AWS Auto Scaling**
 
@@ -185,8 +234,115 @@ Migrate databases from on premise to RDS, DynamoDB, RedShift. Includes an schema
 
 Move data (NSF /SMB) to S3 and EFS. Runs with an agent. Typically from on-premise data center.
 
-**AWs Migration Hub**
+**AWS Migration Hub**
+
+Single place to monitor all AWS migration tools.
+
+**AWS SMS (Server Migration Service)**
+
+Contains the Application Migration Service for lift-and-shift migrations to AWS.
+
+**AWS Snowball/ Snowmobile**
+
+Migrates your data center to AWS by transferring to to a physical device.
+
+**AWS Transfer Family**
+
+Transfer data over FTP like protocols to S3 and EFS.
+
+### Networking and Content Delivery
+
+**Amazon API Gateway**
+
+Centralized serverless entry point to your application apis.
+
+**CloudFront**
+
+CDN solution.
+
+**AWS Direct Connect**
+
+Hybrid cloud solution. Create a dedicated connection to AWS from your data center without going through the internet.
+
+**AWS Global Accelerator**
+
+Use AWS edge locations and the global AWS backbone network to achieve very high network performance when accessing your applications from the internet.
+
+**Route 53**
+
+AWS own DNS. Register your domains here.
+
+**AWS Transit Gateway**
+
+Connect a large amount of VPCs together when VPC peering is not enough.
+
+**Amazon VPC**
+
+Your custom network inside a AWS region.
+
+### Security Identity and Compliance
+
+**AWS Certificate Manager**
+
+Manage TLS certificates from AWS or your own.
+
+**AWS Directory Service**
+
+Managed Microsoft Active Directory.
+
+**Amazon Guard Duty**
+
+Service that monitors your AWS account for threats and security issues.
+
+**AWS Identity and Access Management (IAM)**
+
+Heart piece of AWS. Manage access to your Account.
+
+**Amazon Macie**
+
+Managed data security service. Discover sensitive and vulnerable data in your S3 Buckets.
+
+**AWS Secrets Manager**
+
+Well it stores secrets.
+
+**AWS Shield**
+
+DDoS protection.
+
+**AWS Single Sign-On**
+
+SSO solution to avoid setting up custom users.
+
+**AWS WAF**
+
+Firewall service. Protect against malicious traffic, block IPs, SQL injection, XSS, ect.
+
+### Storage
+
+**EBS (Elastic Block Store)**
+
+Standard block storage drives. SSD , HDD ..
+
+**EFS (Elastic File System)**
+
+Amazons network drive.
+
+**Amazon FSx**
+
+Windows file system network drives or high performance network drives.
+
+**S3 (Simple Storage Service)**
+
+Object storage
+
+**S3 Glacier**
+
+Cheaper S3 storage class with longer retrieval times.
+
+**AWS Storage Gateway**
+
+Use cloud storage from your on-premise infrastructure.
 
 Cheers
 Timur
-### Management and Governance
