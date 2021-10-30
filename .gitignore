@@ -16,3 +16,4 @@ _gen
 
 .idea
 
+myblog/resources/_gen/**
