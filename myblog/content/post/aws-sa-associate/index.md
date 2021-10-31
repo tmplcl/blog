@@ -16,6 +16,11 @@ image = "cert.png"
 
 ### IAM
 
+- Global service
+- access key id only for programmatic access
+- MFA must be set by each user
+- Identities: Users, Groups, Roles
+
 ### S3
 
 - Object storage with unlimited amount of data capacity
@@ -44,8 +49,6 @@ image = "cert.png"
 - Glacier: 90 days charge - mins to hours latency
 - Glacier Deep Archive: 180 days charge - hours latency
 
-
-
 ### VPC
 
 #### VPC Endpoints
@@ -58,23 +61,160 @@ image = "cert.png"
   - Route target
   - Only DynamoDB and S3
 
+#### VPC Flow logs
 
+- In and out traffic
+- VPC / Subnet / ENI level
+- Only IPs
 
+#### NACL
 
+- Default NACL allows all out and inbound traffic
+- Subnets need exactly one association
+- Allow or deny rules
+- Stateless (inbound is not allowed outbound)
 
+#### Security Groups
 
+- Instance level firewall
+- All inbound is blocked and all outbound allowed by default
+- Stateful (inbound is also allowed outbound)
+
+#### NAT
+
+- Allow outbound traffic to the internet from a private subnet
+- Must exist in a public subnet
+- NAT instance (disable resource and destination checks)
+- Gateway 
+  - 5 to 45 Gbps
+  - Per AZ
+- 
 
 ### EC2
 
-#### Spot Instances
+- General Purpose, Compute Optimized, Memory Optimized, Accelerated Optimized, Storage Optimized
+- Metadata - http://169.254.169.254/latest/meta-data
 
-So what happens to all the instances that are reserved by customers but not used. Smart as AWS is they sell this capacity to different customers under the premise that they can terminate this instance with a two minute warning.
 
-These type of instances are called spot instances. Depending on the current capacity in the region these instances can be used for a much cheaper price (up to 90 percent) the so called **spot price** that moves up and down.
+#### Placement Groups
 
-If you want to use these instances you can issue a maximum price that you want to pay. As long as the current spot price is under your maximum price your instances will be provisioned. If it's above they wont. 
+- Cluster
+  - Inside same AZ
+  - Low latency
+- Partition
+  - Logical Partition - One Rack per partition
+- Spread
+  - Instances placed on different Racks
+  - Max 7 instances
+  - Multi AZ
 
-Since your instances can be terminated with a notice of two minutes the best use cases are stateless workloads like big data, social media, web apis and so on. You should definitely not use these instances for your databases.
+#### Pricing
+
+- On-Demand
+  - Pay per hours
+- Reserved Instances
+  - Up to 75% off
+  - Can be resold
+- Spot Instances
+
+  So what happens to all the instances that are reserved by customers but not used. Smart as AWS is they sell this capacity to different customers under the premise that they can terminate this instance with a two minute warning.
+
+  These type of instances are called spot instances. Depending on the current capacity in the region these instances can be used for a much cheaper price (up to 90 percent) the so called **spot price** that moves up and down.
+
+  If you want to use these instances you can issue a maximum price that you want to pay. As long as the current spot price is under your maximum price your instances will be provisioned. If it's above they wont. 
+
+  Since your instances can be terminated with a notice of two minutes the best use cases are stateless workloads like big data, social media, web apis and so on. You should definitely not use these instances for your databases.
+
+### ELB
+
+- Network Application or Classic
+- No cross region ELB
+- X-Forwarded-For Header contains IP
+
+### EBS
+
+- Snapshots
+- Modified on the fly
+- Root volumes deleted on termination
+- Instance Store
+  - Ephermal
+
+### CloudFront
+
+- CDN with copies in Edge Locations
+- Web or RTMP (Streaming Media) Distributions
+- Protect with Signed URL and Signed Cookies
+- Lambda@Edge - Change behaviour of response
+
+
+### RDS
+ 
+- Aurora, MySQL, MariaDB, Postgres, Oracle, SQL Server
+- Multi AZ
+- Read-Replicas
+- Aurora
+  - 6 copies - 3 AZ
+  - Can be Global
+  - Serverless option
+
+### Storage Gateway
+
+- Connect on-premise storage to cloud storage
+- Volume Gateway - Backups
+  - Stored (EBS Snapshots in S3) - Data on-premise
+  - Cached - Only cached on-premis - Data on S3
+- File Gateway - S3 as a local file system (NFS/ SMB)
+  - Extend local hard drive
+- Tape Gateway
+  - Backup virtual tapes to S3 Glacier
+
+### Kinesis
+
+- Real-time streaming data
+- Firehose
+  - Processed Data disappears
+- Data Analytics
+  -  Real Time queries
+- Data Stream
+  - Persist streams in shards 24h to 168h
+
+### API Gateway
+
+- Secure, throttle APIs
+- Caching
+- CORS, XSS
+- Authorization with Cognito or Lambda
+
+### Lambda
+
+- Timeout at 15 mins, memory up to 3008 mb (may be higher now)
+- Up to 1000 concurrent functions
+### Cognito
+
+- Managed authentication and identity service
+- User Pool: User directory to allow authentication with Identity Providers
+- Identity Pool: temporary IAM Credentials
+- Identity Providers: OIDC -> Oauth, SAML -> SSO, Facebook google, Amazon
+
+### Route53
+
+- DNS Provider
+- Routing
+  - Simple - Random
+  - Weighted - Percentage based
+  - Latency-Based
+  - Failover - Change on Health Checks
+  - Geolocation - Geographic location of requests origin
+  - Geo-proximity - More complex stuff
+  - Multi-value - Return multiple values to DNS queries
+- Alias record - Smart AWS custom record
+- Route53 resolver - Route DNS queries between your VPCs and Datacenter
+
+### CloudTrail
+
+- Log API calls
+- Account or Org level
+- Data Events (S3 GetObject f.e. ), Management Events (AssumeRole)
 
 ## AWS Service Overview
 
