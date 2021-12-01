@@ -14,17 +14,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Hugo setup
         uses: peaceiris/actions-hugo@v2.4.13
-        with:
-          working-directory: "myblog"
 
       - name: Build Hugo App
         run: hugo --minify
+        working-directory: myblog
 
       - name: CDK Diff
         uses: youyo/aws-cdk-github-actions@v2.1.1
-        with:
-          cdk_subcommand: diff
-          working_dir: infra
+        working-directory: infra
+        run: cdk diff BlogInfraStack
