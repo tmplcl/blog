@@ -31,10 +31,12 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
-          role-to-assume: arn:aws:iam::834067345082:role/MyDeployRole
+          role-to-assume: ${{ secrets.ROLE_ARN }}
           aws-region: eu-central-1
 
       - name: CDK Diff
         uses: youyo/aws-cdk-github-actions@v2.1.1
-        working-directory: infra
-        run: cdk diff BlogInfraStack
+        with:
+          working_dir: infra
+          cdk_subcommand: 'diff'
+          actions_comment: true
