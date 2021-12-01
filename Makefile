@@ -4,7 +4,7 @@ clean:
 	rm -rf myblog/public myblog/resources
 
 build:
-	cd myblog && hugo ; cd -
+	cd myblog && hugo --minify ; cd -
 
 diff:
 	cd infra && cdk --profile private diff ; cd -
