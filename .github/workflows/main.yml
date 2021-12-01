@@ -42,3 +42,6 @@ jobs:
           working_dir: infra
           cdk_subcommand: 'diff'
           actions_comment: true
+        env:
+          CDK_DEFAULT_ACCOUNT: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
+          CDK_DEFAULT_REGIOn: ${{ secrets.CDK_DEFAULT_REGIOn }}
