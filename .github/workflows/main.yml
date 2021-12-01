@@ -46,4 +46,4 @@ jobs:
           actions_comment: true
         env:
           AWS_ACCOUNT_ID: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
-          AWS_REGION: ${{ secrets.CDK_DEFAULT_REGIOn }}
+          AWS_REGION: ${{ secrets.CDK_DEFAULT_REGION }}
