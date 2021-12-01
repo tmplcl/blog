@@ -11,6 +11,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # needed to interact with GitHub's OIDC Token endpoint.
+      contents: read
 
     steps:
       - uses: actions/checkout@v2
@@ -24,6 +27,12 @@ jobs:
       - name: Build Hugo App
         run: hugo --minify
         working-directory: myblog
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: arn:aws:iam::834067345082:role/MyDeployRole
+          aws-region: eu-central-1
 
       - name: CDK Diff
         uses: youyo/aws-cdk-github-actions@v2.1.1
