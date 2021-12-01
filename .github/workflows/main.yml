@@ -36,11 +36,13 @@ jobs:
           role-to-assume: ${{ secrets.ROLE_ARN }}
           aws-region: eu-central-1
 
-      - name: CDK Diff
+      - name: CDK deploy
         uses: youyo/aws-cdk-github-actions@v2.1.1
         with:
           working_dir: infra
-          cdk_subcommand: 'diff'
+          cdk_subcommand: 'deploy'
+          cdk_stack: 'BlogInfraStack'
+          cdk_args: '--require-approval never'
           actions_comment: true
         env:
           AWS_ACCOUNT_ID: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
