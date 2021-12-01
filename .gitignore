@@ -8,5 +8,16 @@ node_modules
 .cdk.staging
 cdk.out
 
+cdk.context.json
+
 # Hugo
 public
+jsconfig.json
+
+_gen
+
+.idea
+
+*.content
+
+myblog/resources

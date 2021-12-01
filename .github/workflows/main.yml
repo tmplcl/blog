@@ -1,0 +1,49 @@
+name: Deploy Blog
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # needed to interact with GitHub's OIDC Token endpoint.
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Hugo setup
+        uses: peaceiris/actions-hugo@v2.4.13
+        with:
+          extended: true
+
+      - name: Build Hugo App
+        run: hugo --minify
+        working-directory: myblog
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: ${{ secrets.ROLE_ARN }}
+          aws-region: eu-central-1
+
+      - name: CDK deploy
+        uses: youyo/aws-cdk-github-actions@v2.1.1
+        with:
+          working_dir: infra
+          cdk_subcommand: 'deploy'
+          cdk_stack: 'BlogInfraStack'
+          cdk_args: '--require-approval never'
+          actions_comment: true
+        env:
+          AWS_ACCOUNT_ID: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
+          AWS_REGION: ${{ secrets.CDK_DEFAULT_REGION }}

@@ -6,10 +6,10 @@ import { InfraStack as BlogInfraStack } from '../lib/infra-stack';
 const app = new cdk.App();
 new BlogInfraStack(app, 'BlogInfraStack', {
     env: {
-        account: process.env.CDK_DEFAULT_ACCOUNT,
-        region: process.env.CDK_DEFAULT_REGION,
+        account: process.env.AWS_ACCOUNT_ID,
+        region: process.env.AWS_REGION,
     },
     domainName: "coel.link",
-    siteSubDomain: "blog",
+    siteSubDomain: "blog"
 });
 

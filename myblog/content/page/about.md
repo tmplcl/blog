@@ -1,33 +1,61 @@
 ---
 title: About
-description: Hugo, the world's fastest framework for building websites
-date: '2019-02-28'
+description: My blog where I post about tech stuff. Though it's mostly about AWS and Java.
+date: '2021-07-28'
 aliases:
   - about-us
-  - about-hugo
+  - about-timur
   - contact
 license: CC BY-NC-ND
-lastmod: '2020-10-09'
+lastmod: '2021-12-01'
 menu:
     main: 
         weight: -90
-        pre: user
+        params:
+            icon: user
 ---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+# Hey, I'm Timur
 
-Hugo makes use of a variety of open source projects including:
+I'm a DevOps and cloud enthusiast currently employed by DB Systel GmbH in Frankfurt.
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+Whatever the role, I'm focused on productivity, simplicity and getting software ready for production.
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+During my wild ride in the industry I keep on learning new stuff that I try to write down in this blog so that you don't have to learn it the hard way.
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+# Work Experience
 
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
+**Since April 2020**
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+**DevOps Engineer**
+
+DB Systel GmbH
+
+Working on projects for DB Fernverkehr. Among other things our team developed and operated an application for travellers disposition. The goal was to reduce average trip duration for all travellers if train stops or whole train rides were canceled.
+
+Role:
+
+- Desigining and implementing complex requirements in a distributed microservice environment.
+- Building new and enhancing existing CI pipelines and deployment processes for reliable and easy delivery.
+- Enhancing the systems architecture and monitoring for the application running on kubernetes and AWS for high availability and on call rotation.
+
+Technologies:
+
+Java, Spring Boot, PostgreSQL, ActiveMQ, Kubernetes (OpenShift), AWS RDS, Amazon MQ, EC2, Lambda, Prometheus, Grafana, CloudWatch
+
+
+----------
+
+## Software Engineer (Full Stack)
+
+Deutsche Bundesbank
+
+Working for the statistics departement for reporting of the euro short-term rate (€STR) and money market transaction data.
+
+
+# Education
+
+2016
+
+Bachelor of Science - Applied Computer Science
+
