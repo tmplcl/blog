@@ -43,5 +43,5 @@ jobs:
           cdk_subcommand: 'diff'
           actions_comment: true
         env:
-          CDK_DEFAULT_ACCOUNT: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
-          CDK_DEFAULT_REGIOn: ${{ secrets.CDK_DEFAULT_REGIOn }}
+          AWS_ACCOUNT_ID: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
+          AWS_REGION: ${{ secrets.CDK_DEFAULT_REGIOn }}
