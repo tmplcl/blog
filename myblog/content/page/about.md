@@ -7,11 +7,12 @@ aliases:
   - about-timur
   - contact
 license: CC BY-NC-ND
-lastmod: '2021-07-28'
+lastmod: '2021-12-01'
 menu:
     main: 
         weight: -90
-        pre: user
+        params:
+            icon: user
 ---
 
 # Hey, I'm Timur
