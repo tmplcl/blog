@@ -1,6 +1,6 @@
 +++ author = "Timur Philip Cöl"
 title = "My thoughts on AWS exams"
-date = "2021-21-01"
+date = "2021-12-01"
 description = "My thoughts after passing the AWS Certified Solutions Architect – Associate exam"
 categories = [
 "cloud",

@@ -1,6 +1,6 @@
 +++ author = "Timur Philip Cöl"
 title = "Deploying this blog"
-date = "2021-09-05"
+date = "2021-09-10"
 description = "Here I show you how you can quickly deploy static web pages with S3, CloudFront and Hugo using the AWS CDK"
 categories = [
 "cloud",

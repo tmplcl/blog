@@ -48,9 +48,9 @@ Java, Spring Boot, Kubernetes (OpenShift), Docker, Helm, GitLab CI/CD, JFrog Art
 
 ----------
 
-October 2016 to April 2020
+**October 2016 to April 2020**
 
-## Software Engineer (Full Stack)
+**Software Engineer (Full Stack)**
 
 Deutsche Bundesbank
 
@@ -70,14 +70,13 @@ Java EE, Maven, JAX-WS, Hibernate, JSF, Jenkins, SVN, WebSphere Application Serv
 
 ----------
 
-## Intern - Software Engineering / IT Infrastructure
+## Corporate Student - Software Engineering / IT Infrastructure
 
 October 2013 to October 2016
 
 Deutsche Bundesbank
 
-During my degree i worked 18 months as an intern in various teams of the IT department ranging from Full Stack Software Engineering to Windows System Administration.
-
+During my degree i worked 18 months as an corporate student in various teams of the IT department ranging from Full Stack Software Engineering to Windows System Administration.
 
 # Certifications
 
