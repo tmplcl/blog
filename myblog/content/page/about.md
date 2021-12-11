@@ -23,13 +23,33 @@ Whatever the role, I'm focused on productivity, simplicity and getting software 
 
 During my journey in the industry I keep on learning new stuff that I try to write down in this blog so that you don't have to learn it the hard way.
 
+# Professional Summary
+
+* Experienced software engineer with entrepreneurial mindset and commitment to DevOps culture
+
+* Innovative developer with 5+ years of project experience in designing, developing and operating complex software solutions
+
+* Expert in building solutions based on cloud technologies
+
+# Technical skills
+
+* Programming: Java, TypeScript
+* Database: PostgreSQL, MySQL / MariaDB, Oracle
+* Cloud: AWS, EC2, ECS / Fargate, Lambda, S3, Cloudfront, RDS, DynamoDB, Amazon Connect, Amazon MQ, SNS, SQS, CDK, CloudFormation
+* DevOps: Docker, Kubernetes/ OpenShift, Helm, Observability, Prometheus, Grafana, CI/CD, Gitlab-CI, IaC
+* Backend: Spring Boot, Java EE, Quarkus, Hibernate, RESTFul APIs, Messaging APIs
+* Architecture: High Availability, Horizontal Scaling, Microservice Architecture, Message Driven Architecture
+* Version control: Git, Github, Gitlab, SVN
+* Project management: Scrum, Confluence, Jira
+* OS: Linux, macOS, Windows
+
 # Work Experience
+
+## DB Systel GmbH
 
 **Since April 2020**
 
 **DevOps Engineer**
-
-DB Systel GmbH
 
 Working on projects for DB Fernverkehr. Among other things my team developed and operated an application for travellers disposition. 
 The goal was to keep track on where the current travellers are and what trains they might use to reach their destination.
@@ -47,15 +67,13 @@ Technologies:
 Java, Spring Boot, Kubernetes (OpenShift), Docker, Helm, GitLab CI/CD, JFrog Artifactory, Amazon RDS (PostgreSQL), Amazon MQ (ActiveMQ), Amazon EC2, AWS Lambda, Amazon CloudWatch, Prometheus, Grafana
 
 ----------
+## Deutsche Bundesbank
 
 **October 2016 to April 2020**
 
 **Software Engineer (Full Stack)**
 
-Deutsche Bundesbank
-
 Working for the statistics department. My team built a reporting system for the euro short-term rate (€STR) and money market transaction data.
-
 
 Role:
 
@@ -66,7 +84,7 @@ Role:
 
 Technologies:
 
-Java EE, Maven, JAX-WS, Hibernate, JSF, Jenkins, SVN, WebSphere Application Server, Eclipse, DB2, XML, XSD, SQL, SQL Server
+Java EE, Angular, Maven, JAX-WS, Hibernate, JSF, Jenkins, SVN, WebSphere Application Server, Eclipse, DB2, XML, XSD, SQL, SQL Server
 
 ----------
 
@@ -76,7 +94,7 @@ October 2013 to October 2016
 
 Deutsche Bundesbank
 
-During my degree i worked 18 months as an corporate student in various teams of the IT department ranging from Full Stack Software Engineering to Windows System Administration.
+During my degree i worked 18 months as a corporate student in various teams of the IT department ranging from Full Stack Software Engineering to Windows System Administration.
 
 # Certifications
 
@@ -89,4 +107,3 @@ During my degree i worked 18 months as an corporate student in various teams of 
 Bachelor of Science - Applied Computer Science
 
 **Duale Hochschule Baden-Württemberg Mosbach**
-
