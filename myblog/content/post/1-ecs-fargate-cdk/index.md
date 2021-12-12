@@ -16,7 +16,6 @@ tags = [
 "cdk",
 "ecs"
 ]
-image = "rack.jpg"
 +++
 
 In this blog post I will show you how you can easily deploy containers to AWS ECS. You can check out the code used in this blog post [on GitHub](https://github.com/tmplcl/Spring-Boot-ECS-Fargate).

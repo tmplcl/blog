@@ -14,7 +14,7 @@ tags = [
 "cloudwatch",
 "aws"
 ]
-image = "ssl-cert.png"
+
 +++
 
 **So i wanted to write about this story for a little while.**

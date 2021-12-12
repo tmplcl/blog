@@ -11,7 +11,6 @@ tags = [
 "cloud",
 "aws"
 ]
-image = "cert.png"
 +++
 
 After working almost two years with AWS i decided that it's finally time to do the Solution Architect exam. To be honest, i wanted to clear it way earlier but i guess the everyday laziness and my dislike for exams in general kicked in.

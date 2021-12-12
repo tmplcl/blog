@@ -13,7 +13,6 @@ tags = [
 "aws",
 "cdk",
 ]
-image = "one-tree-hill-1360813.jpg"
 +++
 
 Cheers
